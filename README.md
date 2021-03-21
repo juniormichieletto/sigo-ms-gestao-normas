@@ -1,3 +1,5 @@
+![main](https://github.com/juniormichieletto/sigo-ms-gestao-normas/actions/workflows/ci/badge.svg)
+  
 # sigo-ms-gestao-normas
 
 TCC - Gestão de Normas: este módulo visa manter as normas técnicas existentes nas áreas industrial,ambiental e outras aplicáveis.
