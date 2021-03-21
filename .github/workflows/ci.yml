@@ -23,7 +23,7 @@ jobs:
     - name: Build package with Maven
       run: mvn -B package --file pom.xml
     - name: Build docker image with Maven
-      run: mvn clean package clean package -Dquarkus.container-image.group=juniormichieletto
+      run: mvn clean package -DskipTests -Dquarkus.container-image.build=true -Dquarkus.container-image.group=juniormichieletto
     
     
 
