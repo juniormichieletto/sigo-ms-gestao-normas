@@ -1,6 +1,7 @@
 package br.com.pucminas.resource.http;
 
 import br.com.pucminas.domain.Norma;
+import br.com.pucminas.domain.exception.NormaException;
 import br.com.pucminas.resource.common.ExceptionResponse;
 import br.com.pucminas.resource.dto.NormaRequest;
 import br.com.pucminas.resource.dto.NormaResponse;
@@ -9,7 +10,6 @@ import br.com.pucminas.usecase.AlterarNorma;
 import br.com.pucminas.usecase.BuscarNorma;
 import br.com.pucminas.usecase.CadastrarNorma;
 import br.com.pucminas.usecase.ListarNormas;
-import br.com.pucminas.domain.exception.NormaException;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.inject.Inject;
@@ -19,7 +19,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import static java.util.List.of;
 import static java.util.stream.Collectors.toList;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
