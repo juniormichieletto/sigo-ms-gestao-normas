@@ -1,4 +1,4 @@
-![main](https://github.com/juniormichieletto/sigo-ms-gestao-normas/actions/workflows/ci/badge.svg)
+![main](https://github.com/juniormichieletto/sigo-ms-gestao-normas/actions/workflows/ci.yml/badge.svg)
   
 # sigo-ms-gestao-normas
 
