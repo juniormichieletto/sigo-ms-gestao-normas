@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  registry_db_postgres:
+    container_name: registry_db_postgres
+    image: postgres:12.3-alpine
+    environment:
+      POSTGRES_USER: msgestaonormas
+      POSTGRES_PASSWORD: msgestaonormaspassword
+    ports:
+    - "5432:5432"

@@ -1,0 +1,9 @@
+NORMA:
+  - ID: 1
+    NOME: "Norma disposicoes gerais"
+    CODIGO: "1.1.1"
+    DESCRICAOCOMPLETA: "O objetivo desta Norma é estabelecer as disposições gerais."
+  - ID: 2
+    NOME: "Norma anexo 1"
+    CODIGO: "1.1.2"
+    DESCRICAOCOMPLETA: "Consideram-se os termos e definições constantes no Anexo I."
