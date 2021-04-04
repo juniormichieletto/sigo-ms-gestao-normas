@@ -23,17 +23,11 @@ spec:
       - name: sigo-ms-gestao-normas
         imagePullPolicy: Always
         image: juniormichieletto/sigo-ms-gestao-normas:latest
-        env:
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres-secret
-                key: POSTGRES_PASSWORD
-          - name: POSTGRES_JDBC_URL
-            valueFrom:
-              configMapKeyRef:
-                name: postgres-config
-                key: POSTGRES_HOST
+        envFrom:
+          - secretRef:
+              name: postgres-secret
+          - configMapRef:
+              name: postgres-config
         ports:
           - containerPort: 8080
             name: http
@@ -47,10 +41,11 @@ metadata:
     app-type: sigo-ms-gestaonormas
   name: sigo-ms-gestao-normas
 spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
   selector:
     app.kubernetes.io/name: sigo-ms-gestao-normas
-  type: ClusterIP
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30000
