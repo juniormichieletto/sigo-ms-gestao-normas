@@ -35,8 +35,9 @@ metadata:
   name: normas-api
   namespace: sigo-ms
 spec:
+  type: ClusterIP
   selector:
-    app: normas-api
+      name: normas-api
   ports:
     - protocol: TCP
       port: 8080
