@@ -19,6 +19,11 @@ spec:
         - name: sigo-ms-gestao-normas
           imagePullPolicy: Always
           image: juniormichieletto/sigo-ms-gestao-normas:latest
+          resources:
+            requests:
+              memory: "100Mi"
+            limits:
+              memory: "250Mi"
           envFrom:
             - secretRef:
                 name: postgres-secret
