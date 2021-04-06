@@ -6,7 +6,7 @@ metadata:
   labels:
     name: normas-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       name: normas-api
@@ -23,7 +23,7 @@ spec:
             requests:
               memory: "100Mi"
             limits:
-              memory: "250Mi"
+              memory: "150Mi"
           envFrom:
             - secretRef:
                 name: postgres-secret
@@ -47,3 +47,23 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: normas-api
+  namespace: sigo-ms
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: normas-api
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 90
