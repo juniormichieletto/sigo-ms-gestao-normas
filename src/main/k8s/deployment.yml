@@ -23,7 +23,7 @@ spec:
             requests:
               memory: "100Mi"
             limits:
-              memory: "150Mi"
+              memory: "175Mi"
           envFrom:
             - secretRef:
                 name: postgres-secret
@@ -48,7 +48,7 @@ spec:
       port: 8080
       targetPort: 8080
 ---
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: normas-api
@@ -58,12 +58,18 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: normas-api
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 4
   metrics:
     - type: Resource
       resource:
         name: memory
         target:
-          type: Utilization
-          averageUtilization: 90
+          type: AverageValue
+          averageValue: 120Mi
+  behavior:
+    scaleDown:
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 60
