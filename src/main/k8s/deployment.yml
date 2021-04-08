@@ -66,10 +66,10 @@ spec:
         name: memory
         target:
           type: AverageValue
-          averageValue: 120Mi
+          averageValue: 140Mi
   behavior:
     scaleDown:
       policies:
       - type: Pods
         value: 2
-        periodSeconds: 60
+        periodSeconds: 20
