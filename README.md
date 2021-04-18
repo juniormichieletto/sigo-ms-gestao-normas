@@ -14,6 +14,7 @@ Maven command:
 
 ```shell script
 ./mvnw compile quarkus:dev
+./mvnw -Dquarkus-profile=devlocal compile quarkus:dev
 ```
 
 ## Scripts
