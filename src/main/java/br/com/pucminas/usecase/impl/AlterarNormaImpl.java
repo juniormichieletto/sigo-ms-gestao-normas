@@ -30,7 +30,7 @@ public class AlterarNormaImpl implements AlterarNorma {
 
         normaRepository.findById(normaId)
                 .map(mapNewValuesToNorma)
-                .map(normaRepository::save)
+                .map(normaRepository::save).
                 .orElseThrow(() -> new NormaException("Norma nao encontrada"));
     }
 }

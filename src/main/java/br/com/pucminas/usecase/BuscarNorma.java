@@ -1,10 +1,9 @@
 package br.com.pucminas.usecase;
 
 import br.com.pucminas.domain.Norma;
-
-import java.util.Optional;
+import io.smallrye.mutiny.Uni;
 
 public interface BuscarNorma {
 
-    Optional<Norma> buscar(Long normaId);
+    Uni<Norma> buscar(Long normaId);
 }

@@ -1,11 +1,10 @@
 package br.com.pucminas.repository;
 
 import br.com.pucminas.domain.Norma;
+import io.smallrye.mutiny.Uni;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import java.util.List;
-import java.util.Optional;
 
 @RequestScoped
 class NormaRepositoryImpl implements NormaRepository {
@@ -17,18 +16,19 @@ class NormaRepositoryImpl implements NormaRepository {
     }
 
     @Override
-    public List<Norma> findAll() {
-        return normaPanacheRepository.findAll().list();
+    public Uni<List<Norma>> findAll() {
+        return normaPanacheRepository.findAll()
+                .list();
     }
 
     @Override
-    public Norma save(Norma norma) {
-        normaPanacheRepository.persist(norma);
-        return norma;
+    public Uni<Norma> save(Norma norma) {
+        return normaPanacheRepository.persist(norma)
+                .onItem().transform(a -> norma);
     }
 
     @Override
-    public Optional<Norma> findById(Long normaId) {
-        return normaPanacheRepository.findByIdOptional(normaId);
+    public Uni<Norma> findById(Long normaId) {
+        return normaPanacheRepository.findById(normaId);
     }
 }

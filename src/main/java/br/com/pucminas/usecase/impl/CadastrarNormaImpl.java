@@ -3,6 +3,7 @@ package br.com.pucminas.usecase.impl;
 import br.com.pucminas.domain.Norma;
 import br.com.pucminas.repository.NormaRepository;
 import br.com.pucminas.usecase.CadastrarNorma;
+import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
@@ -18,7 +19,7 @@ class CadastrarNormaImpl implements CadastrarNorma {
     }
 
     @Override
-    public Norma cadastra(Norma norma) {
+    public Uni<Norma> cadastra(Norma norma) {
         return normaRepository.save(norma);
     }
 }

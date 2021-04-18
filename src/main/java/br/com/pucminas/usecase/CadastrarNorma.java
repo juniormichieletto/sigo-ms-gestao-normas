@@ -1,8 +1,8 @@
 package br.com.pucminas.usecase;
 
 import br.com.pucminas.domain.Norma;
-import br.com.pucminas.resource.dto.NormaRequest;
+import io.smallrye.mutiny.Uni;
 
 public interface CadastrarNorma {
-    Norma cadastra(Norma norma);
+    Uni<Norma> cadastra(Norma norma);
 }

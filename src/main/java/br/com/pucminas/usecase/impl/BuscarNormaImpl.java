@@ -3,10 +3,10 @@ package br.com.pucminas.usecase.impl;
 import br.com.pucminas.domain.Norma;
 import br.com.pucminas.repository.NormaRepository;
 import br.com.pucminas.usecase.BuscarNorma;
+import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @RequestScoped
 @Transactional
@@ -19,7 +19,7 @@ class BuscarNormaImpl implements BuscarNorma {
     }
 
     @Override
-    public Optional<Norma> buscar(Long normaId) {
+    public Uni<Norma> buscar(Long normaId) {
         return normaRepository.findById(normaId);
     }
 }

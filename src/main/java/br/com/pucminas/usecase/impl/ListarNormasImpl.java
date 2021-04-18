@@ -3,6 +3,7 @@ package br.com.pucminas.usecase.impl;
 import br.com.pucminas.domain.Norma;
 import br.com.pucminas.repository.NormaRepository;
 import br.com.pucminas.usecase.ListarNormas;
+import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
@@ -19,7 +20,7 @@ public class ListarNormasImpl implements ListarNormas {
     }
 
     @Override
-    public List<Norma> listar() {
+    public Uni<List<Norma>> listar() {
         return normaRepository.findAll();
     }
 }
