@@ -12,7 +12,6 @@ import br.com.pucminas.usecase.CadastrarNorma;
 import br.com.pucminas.usecase.ListarNormas;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.net.URI;
@@ -28,16 +27,23 @@ import static javax.ws.rs.core.Response.ok;
 @Produces(APPLICATION_JSON)
 public class NormaResource {
 
-    @Inject
-    private BuscarNorma buscarNorma;
-    @Inject
-    private AlterarNorma alterarNorma;
-    @Inject
-    private CadastrarNorma cadastrarNorma;
-    @Inject
-    private ListarNormas listarNormas;
-    @Inject
-    private NormaMapper normaMapper;
+    private final BuscarNorma buscarNorma;
+    private final AlterarNorma alterarNorma;
+    private final CadastrarNorma cadastrarNorma;
+    private final ListarNormas listarNormas;
+    private final NormaMapper normaMapper;
+
+    public NormaResource(BuscarNorma buscarNorma,
+                         AlterarNorma alterarNorma,
+                         CadastrarNorma cadastrarNorma,
+                         ListarNormas listarNormas,
+                         NormaMapper normaMapper) {
+        this.buscarNorma = buscarNorma;
+        this.alterarNorma = alterarNorma;
+        this.cadastrarNorma = cadastrarNorma;
+        this.listarNormas = listarNormas;
+        this.normaMapper = normaMapper;
+    }
 
     @GET
     public List<NormaResponse> listarTodas() {
@@ -67,7 +73,7 @@ public class NormaResource {
 
     @PUT
     @Path("{id}")
-    public Response put(@PathParam("id") Long normaId, NormaRequest normaRequest) throws URISyntaxException {
+    public Response put(@PathParam("id") Long normaId, NormaRequest normaRequest) {
         var norma = normaMapper.toObject(normaRequest);
         try {
             alterarNorma.altera(normaId, norma);
